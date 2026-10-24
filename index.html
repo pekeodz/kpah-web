@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Khí Phách Anh Hùng — Offline</title>
+<link rel="icon" href="img/icon/favicon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="game"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div id="hud-top">
+      <div id="avatar"><canvas id="avatar-cv" width="40" height="40"></canvas><span id="hud-lv">1</span></div>
+      <div id="bars">
+        <div id="hud-name">-</div>
+        <div class="bar hp"><i></i><b></b></div>
+        <div class="bar mp"><i></i><b></b></div>
+      </div>
+      <div id="hud-map"><span id="map-name">-</span><span id="hud-xu">0 xu</span></div>
+    </div>
+    <div id="quest" class="hidden"></div>
+    <div id="target" class="hidden"><span id="target-name"></span><div class="bar thp"><i></i><b></b></div></div>
+    <div id="exp-bar"><i></i><b></b></div>
+    <div id="log"></div>
+    <div id="menu-btns">
+      <button data-ui="bag" title="Hành trang (I)">🎒<small>Túi</small></button>
+      <button data-ui="char" title="Nhân vật (C)">🧍<small>Nhân vật</small></button>
+      <button data-ui="skill" title="Kỹ năng (K)">✨<small>Kỹ năng</small></button>
+      <button data-ui="map" title="Bản đồ (M)">🗺️<small>Bản đồ</small></button>
+      <button data-ui="sys" title="Hệ thống (Esc)">⚙️<small>Hệ thống</small></button>
+    </div>
+    <div id="action-bar">
+      <button id="btn-auto" title="Tự động đánh (Z)">AUTO</button>
+      <div id="skill-slots"></div>
+      <button class="pot" id="pot-hp" title="Dùng HP (Q)"><canvas width="16" height="16"></canvas><span>0</span></button>
+      <button class="pot" id="pot-mp" title="Dùng MP (E)"><canvas width="16" height="16"></canvas><span>0</span></button>
+    </div>
+    <div id="joystick"><div id="stick"></div></div>
+    <button id="btn-attack" title="Đánh (Space)">⚔</button>
+    <button id="btn-talk" class="hidden">Nói chuyện</button>
+  </div>
+
+  <!-- Windows -->
+  <div id="win" class="hidden"><div id="win-head"><span id="win-title"></span><button id="win-close">✕</button></div><div id="win-body"></div></div>
+  <div id="dialog" class="hidden"><div id="dlg-name"></div><div id="dlg-text"></div><div id="dlg-opts"></div></div>
+  <div id="toast"></div>
+
+  <!-- Title / create -->
+  <div id="screen-title" class="screen">
+    <div class="title-box">
+      <h1>Khí Phách<br>Anh Hùng</h1>
+      <p class="sub">Bản chơi đơn — không cần máy chủ</p>
+      <div id="loading">Đang tải dữ liệu… <span id="load-pct">0%</span></div>
+      <div id="title-menu" class="hidden">
+        <button id="btn-continue" class="big">Tiếp tục</button>
+        <button id="btn-new" class="big">Tạo nhân vật mới</button>
+        <button id="btn-cloud-load">Tải từ đám mây</button>
+        <button id="btn-import">Nhập file lưu</button>
+        <input type="file" id="file-import" accept=".json" hidden>
+      </div>
+    </div>
+  </div>
+  <div id="screen-create" class="screen hidden">
+    <div class="create-box">
+      <h2>Tạo nhân vật</h2>
+      <div class="create-grid">
+        <div class="preview"><canvas id="create-cv" width="96" height="96"></canvas>
+          <div class="arrows"><button id="head-prev">◀</button><span>Kiểu tóc</span><button id="head-next">▶</button></div>
+        </div>
+        <div class="opts">
+          <label>Tên nhân vật<input id="cr-name" maxlength="12" placeholder="Nhập tên"></label>
+          <div class="row" id="cr-gender"><button data-g="1" class="on">Nam</button><button data-g="2">Nữ</button></div>
+          <div id="cr-class"></div>
+          <p id="cr-desc"></p>
+          <button id="cr-ok" class="big">Vào game</button>
+          <button id="cr-back">Quay lại</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
